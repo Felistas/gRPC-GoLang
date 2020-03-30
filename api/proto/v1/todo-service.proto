@@ -1,8 +1,6 @@
 syntax = "proto3";
 package v1;
 
-import "google/protobuf/timestamp.proto";
-
 
 message ToDo {
 
@@ -12,7 +10,6 @@ message ToDo {
 
   string description = 3;
 
-  google.protobuf.Timestamp reminder = 4;
 }
 
  // Create new todo task

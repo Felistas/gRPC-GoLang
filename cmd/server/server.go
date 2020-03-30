@@ -1,21 +1,21 @@
 package main
 
 import (
-	"github.com/felistas/gRPC-Golang-REST-API/pkg/service/v1"
+	"github.com/felistas/gRPC-Golang-REST-API/pkg/api/v1"
 	"fmt"
 	"log"
 	"net"
 
-	"google.golang.org/gRPC"
+	"google.golang.org/grpc"
 )
 
 func main() {
 	netListener := getNetListener(7000)
-	gRPCServer := gRPC.NewServer()
+	gRPCServer := grpc.NewServer()
 
 
-	repositoryServiceImpl := v1.NewToDoServiceServer()
-	service.RegisterRepositoryServiceServer(gRPCServer, repositoryServiceImpl)
+	repositoryServiceImpl := v1.NewToDoServiceClient()
+	v1.RegisterToDoServiceServer(gRPCServer, repositoryServiceImpl)
 
 	// start the server
 	if err := gRPCServer.Serve(netListener); err != nil {
